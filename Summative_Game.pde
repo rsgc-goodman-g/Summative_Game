@@ -1,4 +1,3 @@
-//float Cup1 = ellipse(
 float x;
 float y;
 float x1;
@@ -50,10 +49,14 @@ void draw() {
   ellipse(x, y, 125, 125);
   ellipse(x1, y, 125, 125);
   ellipse(x2, y, 125, 125);
+
+  // Allow cups to move
   if (y3==y) {
     x=x+s;
     x1=x1+s1;
     x2=x2+s2;
+
+    // Allow the cups to bounce from side to side
     if (x>440) {
       s=-7;
     }
@@ -75,7 +78,7 @@ void draw() {
     }
   }
 
-  if (a==b||a==c) {
+  if (a==b) {
     a=int(random(1, 4));
   }
   if (b==c) {
