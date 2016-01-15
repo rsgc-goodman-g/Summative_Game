@@ -85,6 +85,7 @@ void draw() {
     b=int(random(1, 4));
   }
 
+  // Make the cups to stop moving
   if (a==1) {
     a=100;
   }
@@ -115,14 +116,15 @@ void draw() {
     c=400;
   }
 
+  // The time that the cups move for
   if (t>7) {
-    if (x==a) {
+    if (x>a-5&&x<a+5) {
       s=0;
     }
-    if (x1==b) {
+    if (x1>b-5&&x1<b+5) {
       s1=0;
     }
-    if (x2==c) {
+    if (x2>c-5&&x2<c+5) {
       s2=0;
     }
   }
@@ -130,4 +132,5 @@ void draw() {
   println("a;"+a);
   println("b;"+b);
   println("c;"+c);
+  println("t;"+t);
 }
