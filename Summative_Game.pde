@@ -10,20 +10,31 @@ float t;
 int a;
 int b;
 int c;
+int col;
+int col1;
+int col2;
+int gameover;
+int win;
 void setup() {
   x = 100;
   y = 250;
   x1 = 250;
   x2 = 400;
   y3 = 50;
+  col=0;
+  col1=0;
+  col2=0;
+  gameover=1000;
+  win=1000;
+  
 
   a=int(random(1, 4));
   b=int(random(1, 4));
   c=int(random(1, 4));
 
-  s=7;
-  s1=3;
-  s2=9;
+  s=14;
+  s1=12;
+  s2=16;
 
   t=0;
   // Canvas
@@ -45,10 +56,17 @@ void draw() {
   ellipse(x, y3, 65, 65);
 
   // The Cups
-  fill(100, 100, 255);
+  strokeWeight(3);
+  fill(col);
+  stroke(col+0, col+129, col+255);
   ellipse(x, y, 125, 125);
+  fill(col1);
+  stroke(col1+0, col1+129, col1+255);
   ellipse(x1, y, 125, 125);
+  fill(col2);
+  stroke(col2+0, col2+129, col2+255);
   ellipse(x2, y, 125, 125);
+  noStroke();
 
   // Allow cups to move
   if (y3==y) {
@@ -58,27 +76,30 @@ void draw() {
 
     // Allow the cups to bounce from side to side
     if (x>440) {
-      s=-7;
+      s=-14;
     }
     if (x1>440) {
-      s1=-3;
+      s1=-12;
     }
     if (x2>440) {
-      s2=-9;
+      s2=-16;
     }
 
     if (x<60) {
-      s=+7;
+      s=+14;
     }
     if (x1<60) {
-      s1=+3;
+      s1=+12;
     }
     if (x2<60) {
-      s2=+9;
+      s2=+16;
     }
   }
 
   if (a==b) {
+    a=int(random(1, 4));
+  }
+  if (a==c) {
     a=int(random(1, 4));
   }
   if (b==c) {
@@ -118,13 +139,13 @@ void draw() {
 
   // The time that the cups move for
   if (t>7) {
-    if (x>a-5&&x<a+5) {
+    if (x>a-10&&x<a+10) {
       s=0;
     }
-    if (x1>b-5&&x1<b+5) {
+    if (x1>b-10&&x1<b+10) {
       s1=0;
     }
-    if (x2>c-5&&x2<c+5) {
+    if (x2>c-10&&x2<c+10) {
       s2=0;
     }
   }
@@ -133,4 +154,30 @@ void draw() {
   println("b;"+b);
   println("c;"+c);
   println("t;"+t);
+   fill(0,129,255);
+   textSize(30);
+   text("Congrats you win",win,150);
+       text("GAME OVER",gameover,150);
+       if(win<500||gameover<500){
+         noLoop();
+       }
+}
+
+void mouseClicked() {
+if(t>7){
+  if (mouseX<x+62.5&&mouseX>x-62.5&&mouseY>187.5&&mouseY<312.5) {
+    col=256;
+   
+      win=100;
+  }
+  if (mouseX<x1+62.5&&mouseX>x1-62.5&&mouseY>187.5&&mouseY<312.5) {
+    col1=256;
+    
+gameover=100;
+  }
+  if (mouseX<x2+62.5&&mouseX>x2-62.5&&mouseY>187.5&&mouseY<312.5) {
+    col2=256;
+       gameover=100;
+  }
+}
 }
