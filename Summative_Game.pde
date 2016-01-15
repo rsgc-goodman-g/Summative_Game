@@ -58,13 +58,13 @@ void draw() {
   // The Cups
   strokeWeight(3);
   fill(col);
-  stroke(col+0, col+129, col+255);
+  
   ellipse(x, y, 125, 125);
   fill(col1);
-  stroke(col1+0, col1+129, col1+255);
+ 
   ellipse(x1, y, 125, 125);
   fill(col2);
-  stroke(col2+0, col2+129, col2+255);
+ 
   ellipse(x2, y, 125, 125);
   noStroke();
 
